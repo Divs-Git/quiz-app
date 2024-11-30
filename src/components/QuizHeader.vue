@@ -2,13 +2,13 @@
   <header>
     <h4>Question {{ questionStatus }}</h4>
     <div class="bar">
-      <div class="completion"></div>
+      <div class="completion" :style="{ width: barPercentage }"></div>
     </div>
   </header>
 </template>
 
 <script setup>
-const props = defineProps(['questionStatus'])
+const props = defineProps(['questionStatus', 'barPercentage'])
 </script>
 
 <style scoped>

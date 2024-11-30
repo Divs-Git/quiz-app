@@ -3,7 +3,12 @@
     <h1 class="question">{{ question.text }}</h1>
   </div>
   <div class="options-container">
-    <div v-for="option in question.options" :key="option.id" class="option">
+    <div
+      v-for="option in question.options"
+      :key="option.id"
+      class="option"
+      @click="emitSelectedOption(option.isCorrect)"
+    >
       <p class="option-label">{{ option.label }}</p>
       <div class="option-value">
         <p>{{ option.text }}</p>
@@ -14,6 +19,11 @@
 
 <script setup>
 const props = defineProps(['question'])
+const emits = defineEmits(['selectOption'])
+
+const emitSelectedOption = (isCorrect) => {
+  emits('selectOption', isCorrect)
+}
 </script>
 
 <style scoped>
